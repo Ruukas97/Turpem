@@ -23,9 +23,8 @@ public class PlayerEvents {
 	public void onNameFormat(PlayerEvent.NameFormat event){
 		if(event.entityPlayer.getEntityData().hasKey("DisplayName")) {			
 			event.displayname = event.entityPlayer.getEntityData().getString("DisplayName");
-			System.out.println(event.entityPlayer.getEntityData().getString("DisplayName"));
-			//event.entityPlayer.addPotionEffect(new PotionEffect(32, 10000));
 		}
+		//event.entityPlayer.addPotionEffect(new PotionEffect(32 /*ID of FrozenPotion*/, 10000)); (For testing purposes)
 	}
 	
 	/*@SubscribeEvent

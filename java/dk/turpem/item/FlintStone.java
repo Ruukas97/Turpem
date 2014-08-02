@@ -16,20 +16,24 @@ public class FlintStone extends TurpemItem{
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player,	World world, int x, int y, int z, int par7, float par8, float par9,	float par10) {
 		int randomInt = world.rand.nextInt(10);
+		//0-3 (4)
+		//Nothing Happens
 		if(randomInt < 4){
-			ItemStack newStone = new ItemStack(AllItems.sharpFlint);
 			player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocalFormatted("turpem.action.flintsplinter.message", EnumChatFormatting.GRAY, EnumChatFormatting.DARK_PURPLE, itemstack.getDisplayName(), EnumChatFormatting.GRAY)));
 		}
-		else if(randomInt < 6){
+		//4-6 (3)
+		//Successfully chips into #SharpFlint
+		else if(randomInt < 7){
 			
 		}
+		//7-8 (2)
 		else if(randomInt < 9){
 			
 		}
+		//9-9 (1)
 		else{
 			
 		}
-		super.onItemUse(itemstack, player, world, x, y, z, par7, par8, par9, par10);
-		return true;		
+		return true;	
 	}
 }

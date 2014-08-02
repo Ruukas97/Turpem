@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dk.turpem.creativetab.TurpemTabs;
 
-public class BrokenWeapon extends TurpemItem {
+public class BrokenWeapon extends TurpemTool {
     private float damage;
     private final Item.ToolMaterial material;
     public static final String[] types = new String[] {"knife"};

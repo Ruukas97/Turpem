@@ -1,16 +1,18 @@
 package dk.turpem.proxy;
 
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import dk.turpem.Turpem;
 import dk.turpem.client.gui.GuiHandler;
+import dk.turpem.client.renderer.entity.RenderPlayerTurpem;
 import dk.turpem.client.renderer.tileentity.TileEntitySafeRenderer;
 import dk.turpem.client.renderer.tileentity.TileEntityTurpemChestRenderer;
-import dk.turpem.event.ServerEvents;
 import dk.turpem.event.RenderEvents;
 import dk.turpem.tileentity.TileEntitySafe;
 import dk.turpem.tileentity.TileEntityTurpemChest;
@@ -24,6 +26,8 @@ public class ClientProxy extends CommonProxy {
     	RenderingRegistry.registerBlockHandler(new TileEntitySafeRenderer());
     	
 		NetworkRegistry.INSTANCE.registerGuiHandler(Turpem.instance, new GuiHandler());
+		
+		//RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerTurpem());
 	}
 	
 	@Override
