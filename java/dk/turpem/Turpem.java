@@ -65,9 +65,9 @@ public class Turpem
     public static final String VERSION = "0.5";
     
     /**
-     * A list containing the Minecraft usernames of people who have invested a fair ammount of time in developing the mod
+     * A list containing the Minecraft usernames of people who have p in the development of the mod
      */
-    public static final List<String> developers = Arrays.asList(new String[] {"0Zerotiger", "thedoctor3141"});
+    public static ArrayList<String> developers = new ArrayList();
     /**
      * A list containing the Minecraft usernames of people who have provided help in form of textures, sound, solving a problem etc.
      */
@@ -181,9 +181,14 @@ public class Turpem
     	frozenPotion = (new TurpemPotion(32, true, 0)).setIconIndex(0, 0).setPotionName("turpem.potion.frozen");
     }
     
+    /**
+     * Called right after {@link #init(FMLInitializationEvent)}
+     * @param event
+     */
     @EventHandler
     private void postInit(FMLPostInitializationEvent event){
-    	readDonatorsFromUrl();
+    	readListFromUrl("DeveloperList", developers, "https://raw.githubusercontent.com/Zerotiger/Turpem/master/data/Developers.turpem");
+    	readListFromUrl("DonatorList", donators, "https://raw.githubusercontent.com/Zerotiger/Turpem/master/data/Donators.turpem");
     }
     
     /**
@@ -207,27 +212,26 @@ public class Turpem
     }
     
     /**
-     * Loads the Donatorlist from GitHub
+     * Loads a list from a url
      */
-    private void readDonatorsFromUrl()
+    private void readListFromUrl(String name, ArrayList<String> list, String urlString)
     {
-    	try	{
-    		URL url = new URL("https://raw.githubusercontent.com/Zerotiger/Turpem/master/Donators.turpem");
-        
+    	try	{     
+        	URL url = new URL(urlString);
     		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
     		String donatorlist;
     		while ((donatorlist = in.readLine()) != null){
     			donators.add(donatorlist);     
     		}
-    		FMLLog.getLogger().info("[" + NAME + "] Read donatorlist from + " + url + " : " + donators.toString());        
+    		FMLLog.getLogger().info("[" + NAME + "] Read " + name + " from + " + url + " : " + donators.toString());        
 
     		in.close();
     	}
     	catch (MalformedURLException e){
-    		FMLLog.getLogger().info("[" + NAME + "] Couldn't read donatorlist from url. MalformedURLException");
+    		FMLLog.getLogger().info("[" + NAME + "] Couldn't read " + name + " from url. MalformedURLException");
     	}
     	catch (IOException e){
-    		FMLLog.getLogger().info("[" + NAME + "] Couldn't read donatorlist from url. IOException");
+    		FMLLog.getLogger().info("[" + NAME + "] Couldn't read " + name + " from url. IOException");
     	}
     }
 }
