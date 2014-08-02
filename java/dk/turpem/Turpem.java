@@ -217,9 +217,7 @@ public class Turpem
     		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
     		String donatorlist;
     		while ((donatorlist = in.readLine()) != null){
-    			donators.add(donatorlist);
-    			if(Minecraft.getMinecraft().thePlayer != null && donatorlist == Minecraft.getMinecraft().thePlayer.getCommandSenderName())
-    	    		FMLLog.getLogger().info("Thank you for donating " + Minecraft.getMinecraft().thePlayer.getCommandSenderName() + "!");        
+    			donators.add(donatorlist);     
     		}
     		FMLLog.getLogger().info("[" + NAME + "] Read donatorlist from + " + url + " : " + donators.toString());        
 
