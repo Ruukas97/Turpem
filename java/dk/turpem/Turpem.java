@@ -71,7 +71,7 @@ public class Turpem
     /**
      * A list containing the Minecraft usernames of people who have provided help in form of textures, sound, solving a problem etc.
      */
-    public static final List<String> helpful = Arrays.asList(new String[] {});
+    public static ArrayList<String> helpful = new ArrayList();
     /**
      * A list containing the Minecraft usernames of people who have donated.
      */
@@ -188,6 +188,7 @@ public class Turpem
     @EventHandler
     private void postInit(FMLPostInitializationEvent event){
     	readListFromUrl("DeveloperList", developers, "https://raw.githubusercontent.com/Zerotiger/Turpem/master/data/Developers.turpem");
+    	readListFromUrl("HelpfulList", helpful, "https://raw.githubusercontent.com/Zerotiger/Turpem/master/data/Helpful.turpem");
     	readListFromUrl("DonatorList", donators, "https://raw.githubusercontent.com/Zerotiger/Turpem/master/data/Donators.turpem");
     }
     
@@ -223,7 +224,7 @@ public class Turpem
     		while ((donatorlist = in.readLine()) != null){
     			donators.add(donatorlist);     
     		}
-    		FMLLog.getLogger().info("[" + NAME + "] Read " + name + " from + " + url + " : " + donators.toString());        
+    		FMLLog.getLogger().info("[" + NAME + "] Read " + name + " from " + url + " : " + donators.toString());        
 
     		in.close();
     	}
