@@ -58,11 +58,11 @@ public class Turpem
     /**
      * A list containing the Minecraft usernames of people who have invested a fair ammount of time in developing the mod
      */
-    public static final List<String> developers = Arrays.asList(new String[] {"0Zerotiger"});
+    public static final List<String> developers = Arrays.asList(new String[] {"0Zerotiger", "thedoctor3141"});
     /**
      * A list containing the Minecraft usernames of people who have provided help in form of textures, sound, solving a problem etc.
      */
-    public static final List<String> helpful = Arrays.asList(new String[] {"thedoctor3141"});
+    public static final List<String> helpful = Arrays.asList(new String[] {});
     /**
      * A list containing the Minecraft usernames of people who have donates as of this version.
      */
@@ -117,8 +117,9 @@ public class Turpem
      * @param event
      */
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event){
+    public void preInit(FMLPreInitializationEvent event){    	
     	setModMeta();
+    	
         snw = NetworkRegistry.INSTANCE.newSimpleChannel(MODID); 
         snw.registerMessage(RequestNameChange.Handler.class, RequestNameChange.class, 0, Side.SERVER); 
         snw.registerMessage(SendDisplayName.Handler.class, SendDisplayName.class, 1, Side.CLIENT); 
@@ -128,10 +129,10 @@ public class Turpem
     	proxy.registerEventRenderers();
     	
         MinecraftForge.EVENT_BUS.register(new PlayerEvents());
-		FMLCommonHandler.instance().bus().register(new ConnectionManager());
-		
-		Potion[] potionTypes = null;
+		FMLCommonHandler.instance().bus().register(new ConnectionManager());		
 
+		//For making custom potion effect possible
+		Potion[] potionTypes = null;
 		for (Field f : Potion.class.getDeclaredFields()) {
 			f.setAccessible(true);
 			try {
