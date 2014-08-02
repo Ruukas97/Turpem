@@ -1,0 +1,42 @@
+turpem.item.bark.name=Bark
+turpem.item.bark.info=Treeskin
+turpem.item.brokenweapon_knife.name=Broken Knife
+turpem.item.brokenweapon_knife.info=Quite useless, at it's current state.
+turpem.item.knife_clean.name=Knife
+turpem.item.knife_clean.info=Useful for cutting bark from wood.
+turpem.item.knife_bloody.name=Bloody Knife
+turpem.item.knife_bloody.info=More than just a tool...
+turpem.item.knife_dirty.name=Dirty Knife
+turpem.item.knife_dirty.info=It's meant to be used on trees...
+turpem.item.knife_slimy.name=Slimy Knife
+turpem.item.knife_slimy.info=Looks like it could use some cleaning.
+turpem.item.saw.name=Saw
+turpem.item.saw.info=The making of planks Part 2.
+
+tile.barkless_acacia.name=Barkless Acacia Wood
+tile.barkless_birch.name=Barkless Birch Wood
+tile.barkless_darkoak.name=Barkless Dark Oak Wood
+tile.barkless_jungle.name=Barkless Jungle Wood
+tile.barkless2_oak.name=Barkless Oak Wood
+tile.barkless2_spruce.name=Barkless Spruce Wood
+tile.oiledChest.name=Oiled Chest
+tile.acaciaChest.name=Acacia Chest
+tile.birchChest.name=Birch Chest
+tile.darkoakChest.name=Dark Oak Chest
+tile.jungleChest.name=Jungle Chest
+tile.oakChest.name=Oak Chest
+tile.spruceChest.name=Spruce Chest
+tile.ironChest.name=Iron Chest
+
+itemGroup.vanilla=Vanilla
+
+turpem.condition.dull=Dull
+turpem.condition.normal=Normal
+turpem.condition.sharp=Sharpened
+turpem.action.clean.message=You clean your <item.name> in the water.
+turpem.action.cutbark.message=You cut some §5Bark §7from the log.
+turpem.action.cutbark_last.message=You cut the last of the §5Bark §7from the log.
+turpem.action.flintsplinter.message=%sSome small splinters chip away from the %s%s %s.
+turpem.action.flintsplinterdamage.message=%sSome small splinters chips %s%s %s.
+turpem.tooltip.craftedby=Crafted by 
+turpem.tooltip.forgedby=Forged by 

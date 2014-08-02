@@ -1,0 +1,24 @@
+Version 0.1
+First release with all features from first few weeks
+Advanced Knife Weapon/Tool
+
+
+Version 0.2
+A few changes to namerendering
+
+Version 0.3
+You can now change your username
+
+Version 0.4
+Added Crowns of honor (Coder, Helper)
+Greatly improves barkless logs textures
+Added missing saw texture
+
+Version 0.5
+Added Crown of honor (Donator)
+Added some missing localizations
+Added W.I.P Anvil
+Added CreativeTabs
+Added Logs (Item)
+Added Flint Stone and Sharp Flint
+Added Copper and Bronze Knife
