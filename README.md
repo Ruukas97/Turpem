@@ -10,7 +10,7 @@ TERMS AND CONDITIONS
     1. USED TERMS
     MOD - modification, plugin, a piece of software that interfaces with the Minecraft client to extend, add, change or remove original capabilities.
     MOJANG - Mojang AB
-    OWNER - <your name>, Original author(s) of the MOD. Under the copyright terms accepted when purchasing Minecraft (http://www.minecraft.net/copyright.jsp) the OWNER has full rights over their MOD despite use of MOJANG code.
+    OWNER - Lucas Olai Jarlkov Olsen (GamingTutsDK, 0Zerotiger), Original author(s) of the MOD. Under the copyright terms accepted when purchasing Minecraft (http://www.minecraft.net/copyright.jsp) the OWNER has full rights over their MOD despite use of MOJANG code.
     USER - End user of the mod, person installing the mod.
  
     2. LIABILITY
