@@ -43,6 +43,8 @@ public class TurpemChest extends BlockContainer
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
         setBlockName(name);
         GameRegistry.registerBlock(this, name);
+        setHardness(material == Material.wood ? 2.5F : 5F);
+        setStepSound(material == Material.wood ? soundTypeWood : soundTypeMetal);
     }
     
     public final static String typeName(int type){

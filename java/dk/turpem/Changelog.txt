@@ -2,7 +2,6 @@ Version 0.1
 First release with all features from first few weeks
 Advanced Knife Weapon/Tool
 
-
 Version 0.2
 A few changes to namerendering
 
