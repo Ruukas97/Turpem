@@ -22,3 +22,12 @@ Added Logs (Item)
 Added Flint Stone and Sharp Flint
 Added Copper and Bronze Knife
 thedoctor3141 joined development
+
+Gonna add soon:
+Character customization
+More metals:
+Copper
+Bronze
+Tin
+Silver
+more to come...

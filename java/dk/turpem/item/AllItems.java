@@ -11,6 +11,7 @@ public class AllItems {
 	public static Item 
 	//Materials
 	bark,
+	copperBar,
 	log,
 	pelt,
 	flintStone,
@@ -18,8 +19,8 @@ public class AllItems {
 	//Tools
 	blacksmithHammer,
 	brokenWeapon,
-	copperKnife,
-	ironKnife,
+	knifeCopper,
+	knifeIron,
 	saw,
 	sharpFlint;
 
@@ -31,16 +32,17 @@ public class AllItems {
 		
 		//Materials
 		bark = new TurpemItem("bark");
+		copperBar = new TurpemItem("copperBar");
 		log = new LogItem("log");
 		pelt = new TurpemItem("pelt");
 		flintStone = new FlintStone("flintStone");
 		
 		//Tools
-		GameRegistry.addShapedRecipe(new ItemStack(ironKnife), new Object[] { "B", "H", 'B', Items.iron_ingot, 'H', Items.stick});
+		GameRegistry.addShapedRecipe(new ItemStack(knifeIron), new Object[] { "B", "H", 'B', Items.iron_ingot, 'H', Items.stick});
 		blacksmithHammer = new TurpemTool("blacksmithHammer"); //TODO Make hammer class
 		brokenWeapon = new BrokenWeapon("brokenweapon", ToolMaterial.IRON);
-		copperKnife = new Knife("copperKnife", Items.stick, Items.iron_ingot, ToolMaterial.IRON);
-		ironKnife = new Knife("ironKnife", Items.stick, Items.iron_ingot, ToolMaterial.IRON);
+		knifeCopper = new Knife("knifeCopper", Items.stick, Items.iron_ingot, ToolMaterial.IRON);
+		knifeIron = new Knife("knifeIron", Items.stick, Items.iron_ingot, ToolMaterial.IRON);
 		saw = new Saw("saw");
 		sharpFlint = new SharpFlint("sharpFlint");
 	}

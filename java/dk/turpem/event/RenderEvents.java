@@ -2,6 +2,7 @@ package dk.turpem.event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -11,6 +12,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent.SetArmorModel;
 
@@ -19,6 +21,7 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import dk.turpem.Turpem;
+import dk.turpem.client.gui.GuiTurpemMainMenu;
 import dk.turpem.packet.RequestDisplayName;
 import dk.turpem.util.MathHelper;
 
@@ -116,43 +119,11 @@ public class RenderEvents {
 		}
 	}
 	
-	public void setArmor(SetArmorModel event){
-        Item item = event.stack.getItem();
-		if(item == Items.iron_chestplate){
-			if (item instanceof ItemArmor)
-			{
-				ItemArmor itemarmor = (ItemArmor)item;
-				FMLClientHandler.instance().getClient().renderEngine.bindTexture(RenderBiped.getArmorResource(event.entityPlayer, event.stack, event.slot, null));
-				ModelBiped modelbiped = event.slot == 2 ? event.renderer.modelArmor : event.renderer.modelArmorChestplate;
-				modelbiped.bipedHead.showModel = event.slot == 0;
-				modelbiped.bipedHeadwear.showModel = event.slot == 0;
-				modelbiped.bipedBody.showModel = event.slot == 1 || event.slot == 2;
-				modelbiped.bipedRightArm.showModel = event.slot == 1;
-				modelbiped.bipedLeftArm.showModel = event.slot == 1;
-				modelbiped.bipedRightLeg.showModel = event.slot == 2 || event.slot == 3;
-				modelbiped.bipedLeftLeg.showModel = event.slot == 2 || event.slot == 3;
-				modelbiped = net.minecraftforge.client.ForgeHooksClient.getArmorModel(event.entityPlayer, event.stack, event.slot, modelbiped);
-				event.renderer.setRenderPassModel(modelbiped);
-				/*modelbiped.onGround = event.renderer.mainModel.onGround;
-				modelbiped.isRiding = event.renderer.mainModel.isRiding;
-				modelbiped.isChild = event.renderer.mainModel.isChild;*/
-
-				//Move outside if to allow for more then just CLOTH
-				int j = itemarmor.getColor(event.stack);
-				if (j != -1)
-				{
-					float f1 = (float)(j >> 16 & 255) / 255.0F;
-					float f2 = (float)(j >> 8 & 255) / 255.0F;
-					float f3 = (float)(j & 255) / 255.0F;
-					GL11.glColor3f(f1, f2, f3);					
-					return;
-				}
-				
-				GL11.glColor3f(1.0F, 1.0F, 1.0F);				
-				return;
-			}
+	/*@SubscribeEvent
+	public void onGuiOpen(GuiOpenEvent event){
+		if(event.gui instanceof GuiMainMenu){
+			event.setCanceled(true);
+			Minecraft.getMinecraft().displayGuiScreen(new GuiTurpemMainMenu());
 		}
-		
-		return;
-	}
+	}*/
 }

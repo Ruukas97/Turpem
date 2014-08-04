@@ -86,7 +86,7 @@ public abstract class TurpemTabs extends CreativeTabs{
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem()
         {
-            return AllItems.ironKnife;
+            return AllItems.knifeIron;
         }
     }).func_111229_a(new EnumEnchantmentType[] {EnumEnchantmentType.armor, EnumEnchantmentType.armor_feet, EnumEnchantmentType.armor_head, EnumEnchantmentType.armor_legs, EnumEnchantmentType.armor_torso, EnumEnchantmentType.bow, EnumEnchantmentType.weapon});
     public static final CreativeTabs tabBrewing = new TurpemTabs(9, "brewing")
