@@ -19,7 +19,7 @@ import dk.turpem.tileentity.TileEntityTurpemChest;
 
 public class ClientProxy extends CommonProxy {
 	@Override
-	public void registerEventRenderers(){
+	public void registerRenderers(){
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTurpemChest.class, new TileEntityTurpemChestRenderer());
     	RenderingRegistry.registerBlockHandler(new TileEntityTurpemChestRenderer());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySafe.class, new TileEntitySafeRenderer());
@@ -27,7 +27,7 @@ public class ClientProxy extends CommonProxy {
     	
 		NetworkRegistry.INSTANCE.registerGuiHandler(Turpem.instance, new GuiHandler());
 		
-		//RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerTurpem());
+		RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerTurpem());
 	}
 	
 	@Override

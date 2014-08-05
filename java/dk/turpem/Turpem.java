@@ -135,7 +135,7 @@ public class Turpem
         snw.registerMessage(RequestDisplayName.Handler.class, RequestDisplayName.class, 2, Side.SERVER); 
         
     	proxy.registerEventHandlers();
-    	proxy.registerEventRenderers();
+    	proxy.registerRenderers();
     	
         MinecraftForge.EVENT_BUS.register(new PlayerEvents());
 		FMLCommonHandler.instance().bus().register(new ConnectionManager());		

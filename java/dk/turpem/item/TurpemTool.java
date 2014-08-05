@@ -31,8 +31,7 @@ public class TurpemTool extends TurpemItem{
 	
 	public void damageItemStack(ItemStack itemstack, int chance, int durability, EntityLivingBase wielder, Item handle, Item blade){
 		if (wielder instanceof EntityPlayer && !((EntityPlayer)wielder).capabilities.isCreativeMode && !wielder.worldObj.isRemote){
-			Random rand = new Random();
-			int randomChance = rand.nextInt(durability);
+			int randomChance = wielder.worldObj.rand.nextInt(durability);
 			System.out.println(randomChance + "/" + durability + " Chance : " + chance);
 			if(randomChance >= 0 && randomChance < chance)
 				breakItemStack(itemstack, wielder, handle, blade);
