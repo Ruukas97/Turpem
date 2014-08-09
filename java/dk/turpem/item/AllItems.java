@@ -4,6 +4,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AllItems {
@@ -38,7 +39,7 @@ public class AllItems {
 		flintStone = new FlintStone("flintStone");
 		
 		//Tools
-		GameRegistry.addShapedRecipe(new ItemStack(knifeIron), new Object[] { "B", "H", 'B', Items.iron_ingot, 'H', Items.stick});
+		//GameRegistry.addShapedRecipe(new ItemStack(knifeIron), new Object[] { "B", "H", 'B', Items.iron_ingot, 'H', Items.stick});
 		blacksmithHammer = new TurpemTool("blacksmithHammer"); //TODO Make hammer class
 		brokenWeapon = new BrokenWeapon("brokenweapon", ToolMaterial.IRON);
 		knifeCopper = new Knife("knifeCopper", Items.stick, Items.iron_ingot, ToolMaterial.IRON);

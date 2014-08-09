@@ -11,7 +11,6 @@ public class ConnectionManager {
     public void clientConnection(PlayerLoggedInEvent event)
     {
     	EntityPlayerMP player = (EntityPlayerMP) event.player;
-    	String s = player.getDisplayName();
-    	Turpem.snw.sendToAll(new SendDisplayName(s, player));
+    	Turpem.snw.sendToAll(new SendDisplayName(player.getDisplayName(), player));
     }
 }

@@ -62,7 +62,7 @@ public class Turpem
     /**
      * The version of the mod
      */
-    public static final String VERSION = "0.5";
+    public static final String VERSION = "0.5b";
     
     /**
      * A list containing the Minecraft usernames of people who have p in the development of the mod
