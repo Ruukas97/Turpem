@@ -27,7 +27,7 @@ public class ClientProxy extends CommonProxy {
     	
 		NetworkRegistry.INSTANCE.registerGuiHandler(Turpem.instance, new GuiHandler());
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerTurpem());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerTurpem());
 	}
 	
 	@Override
