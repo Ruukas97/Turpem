@@ -1,19 +1,27 @@
 package dk.turpem.client.renderer.tileentity;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityEnderChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import com.sun.corba.se.impl.orb.NormalDataCollector;
+
+import scala.reflect.internal.Trees.CaseDef;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLLog;
@@ -50,20 +58,21 @@ public class TileEntityTurpemChestRenderer extends TileEntitySpecialRenderer imp
     private ModelChest largeChestModel = new ModelLargeChest();    
 	private TileEntityTurpemChest tileentity = new TileEntityTurpemChest();
 
-    public void renderTileEntityAt(TileEntityTurpemChest tileentity, double p_147502_2_, double p_147502_4_, double p_147502_6_, float p_147502_8_)
+    public void renderTileEntityAt(TileEntityTurpemChest tileentity, double x, double y, double z, float p_147502_8_)
     {
         int i;
 
         if (!tileentity.hasWorldObj())
         {
             i = 0;
+            System.out.println("TE Doesn't have World Object");
         }
         else
         {
             Block block = tileentity.getBlockType();
             i = tileentity.getBlockMetadata();
 
-            if (block instanceof TurpemChest && i == 0)
+            if (block instanceof BlockChest && i == 0)
             {
                 try
                 {
@@ -73,34 +82,12 @@ public class TileEntityTurpemChestRenderer extends TileEntitySpecialRenderer imp
                 {
                     FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest", tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
                 }
-                i = tileentity.getBlockMetadata();
             }
 
             tileentity.checkForAdjacentChests();
         }
 
-        if(tileentity.getIsInInventory()){
-        	System.out.println("Got this far");
-        	System.out.println(tileentity.getBlockType().getUnlocalizedName());
-        	if(tileentity.getBlockType() == AllBlocks.oiledChest) {
-				bindTexture(oiled);
-			} else if(tileentity.getBlockType() == AllBlocks.acaciaChest) {
-				bindTexture(acacia);
-			} else if(tileentity.getBlockType() == AllBlocks.birchChest) {
-				bindTexture(birch);
-			} else if(tileentity.getBlockType() == AllBlocks.darkoakChest) {
-				bindTexture(darkoak);
-			} else if(tileentity.getBlockType() == AllBlocks.jungleChest) {
-				bindTexture(jungle);
-			} else if(tileentity.getBlockType() == AllBlocks.oakChest) {
-				bindTexture(oak);
-			} else if(tileentity.getBlockType() == AllBlocks.spruceChest) {
-				bindTexture(spruce);
-			} else if(tileentity.getBlockType() == AllBlocks.ironChest) {
-				bindTexture(iron);
-			}
-        }
-        else if (tileentity.adjacentChestZNeg == null && tileentity.adjacentChestXNeg == null)
+        if (tileentity.adjacentChestZNeg == null && tileentity.adjacentChestXNeg == null)
         {
             ModelChest modelchest;
 
@@ -109,59 +96,74 @@ public class TileEntityTurpemChestRenderer extends TileEntitySpecialRenderer imp
                 modelchest = this.chestModel;
 
                 switch (tileentity.func_145980_j()) {
+                case 0:
+                	this.bindTexture(oiled);
+                	break;
 				case 1:
-					this.bindTexture(oiled);
-					break;
-				case 0:
 					this.bindTexture(acacia);
 					break;
 				case 2:
 					this.bindTexture(birch);
 					break;
-				case 3:
-					this.bindTexture(darkoak);
-					break;
-				case 4:
-					this.bindTexture(jungle);
-					break;
-				case 5:
-					this.bindTexture(oak);
-					break;
-				case 6:
-					this.bindTexture(spruce);
-					break;
-				case 7:
-					this.bindTexture(iron);
-					break;
-				}
+                case 3:
+                	this.bindTexture(darkoak);
+                	break;
+                case 4:
+                	this.bindTexture(jungle);
+                	break;
+                case 5:
+                	this.bindTexture(oak);
+                	break;
+                case 6:
+                	this.bindTexture(spruce);
+                	break;
+                case 7:
+                	this.bindTexture(iron);
+                	break;
+                default:
+                	this.bindTexture(oak);
+                	break;
+                }
             }
             else
             {
                 modelchest = this.largeChestModel;
 
-                if(tileentity.func_145980_j() == 0){
+                switch (tileentity.func_145980_j()) {
+                case 0:
                 	this.bindTexture(oiledDouble);
-                }else if(tileentity.func_145980_j() == 1){
-                	this.bindTexture(acaciaDouble);
-                }else if(tileentity.func_145980_j() == 2){
-                	this.bindTexture(birchDouble);
-                }else if(tileentity.func_145980_j() == 3){
+                	break;
+				case 1:
+					this.bindTexture(acaciaDouble);
+					break;
+				case 2:
+					this.bindTexture(birchDouble);
+					break;
+                case 3:
                 	this.bindTexture(darkoakDouble);
-                }else if(tileentity.func_145980_j() == 4){
+                	break;
+                case 4:
                 	this.bindTexture(jungleDouble);
-                }else if(tileentity.func_145980_j() == 5){
+                	break;
+                case 5:
                 	this.bindTexture(oakDouble);
-                }else if(tileentity.func_145980_j() == 6){
+                	break;
+                case 6:
                 	this.bindTexture(spruceDouble);
-                }else if(tileentity.func_145980_j() == 7){
+                	break;
+                case 7:
                 	this.bindTexture(ironDouble);
+                	break;
+                default:
+                	this.bindTexture(oakDouble);
+                	break;
                 }
             }
 
             GL11.glPushMatrix();
             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            GL11.glTranslatef((float)p_147502_2_, (float)p_147502_4_ + 1.0F, (float)p_147502_6_ + 1.0F);
+            GL11.glTranslatef((float)x, (float)y + 1.0F, (float)z + 1.0F);
             GL11.glScalef(1.0F, -1.0F, -1.0F);
             GL11.glTranslatef(0.5F, 0.5F, 0.5F);
             short short1 = 0;
@@ -235,9 +237,71 @@ public class TileEntityTurpemChestRenderer extends TileEntitySpecialRenderer imp
     {
         this.renderTileEntityAt((TileEntityTurpemChest)p_147500_1_, p_147500_2_, p_147500_4_, p_147500_6_, p_147500_8_);
     }
+    
+    private TileEntityChest oiledTE = new TileEntityChest(0);
+    private TileEntityChest acaciaTE = new TileEntityChest(1);
+    private TileEntityChest birchTE = new TileEntityChest(2);
+    private TileEntityChest darkoakTE = new TileEntityChest(3);
+    private TileEntityChest jungleTE = new TileEntityChest(4);
+    private TileEntityChest oakTE = new TileEntityChest(5);
+    private TileEntityChest spruceTE = new TileEntityChest(6);
+    private TileEntityChest ironTE = new TileEntityChest(7);
 
 	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {	
+	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
+        ModelChest modelchest = this.chestModel;
+		if (block == AllBlocks.oiledChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(oiled);
+        }
+        else if (block == AllBlocks.acaciaChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(acacia);
+        }
+        else if (block == AllBlocks.birchChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(birch);
+
+        }
+        else if (block == AllBlocks.darkoakChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(darkoak);
+        }
+        else if (block == AllBlocks.jungleChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(jungle);
+        }
+        else if (block == AllBlocks.oakChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(oak);
+        }
+        else if (block == AllBlocks.spruceChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(spruce);
+        }
+        else if (block == AllBlocks.ironChest)
+        {
+			Minecraft.getMinecraft().renderEngine.bindTexture(iron);
+        }
+		
+        GL11.glPushMatrix();
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glTranslatef((float)0, (float)1.0F, (float)1.0F);
+        GL11.glScalef(1.0F, -1.0F, -1.0F);
+        GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+        GL11.glRotatef((float)270, 0.0F, 1.0F, 0.0F);
+        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+        //float f1 = tileentity.prevLidAngle + (tileentity.lidAngle - tileentity.prevLidAngle) * 0;
+        //float f2;
+        
+       // f1 = 1.0F - f1;
+        //f1 = 1.0F - f1 * f1 * f1;
+        //modelchest.chestLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
+        modelchest.renderAll();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        GL11.glPopMatrix();
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
