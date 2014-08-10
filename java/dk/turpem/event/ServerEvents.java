@@ -13,11 +13,4 @@ public class ServerEvents
 		System.out.println(event.player.getDisplayName() + " wrote : " + event.message);
 		ChatHelper.sendChatFromText(event.player, event.message);
 	}
-	
-	/*@SubscribeEvent
-	public void onPlayerLogin(EntityConstructing event){
-		if(event.entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entity;
-		}
-	}*/
 }

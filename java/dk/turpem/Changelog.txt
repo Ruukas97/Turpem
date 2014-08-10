@@ -23,6 +23,9 @@ Added Flint Stone and Sharp Flint
 Added Copper and Bronze Knife
 Updates to player customization
 
+Version 0.6
+Fixed rendering for safe and chests
+
 
 Gonna add soon:
 Character customization

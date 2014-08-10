@@ -8,11 +8,8 @@ import java.net.URI;
 
 import javax.imageio.ImageIO;
 
-import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException;
-
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.entity.player.EntityPlayer;
-import scala.reflect.io.Path;
 
 public class GeneratePlayerSkin {
 

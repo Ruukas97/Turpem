@@ -6,22 +6,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntityEnderChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.sun.corba.se.impl.orb.NormalDataCollector;
-
-import scala.reflect.internal.Trees.CaseDef;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLLog;
@@ -30,8 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import dk.turpem.Turpem;
 import dk.turpem.block.AllBlocks;
 import dk.turpem.block.TurpemChest;
-import dk.turpem.client.model.ModelSafe;
-import dk.turpem.tileentity.TileEntitySafe;
 import dk.turpem.tileentity.TileEntityTurpemChest;
 
 @SideOnly(Side.CLIENT)

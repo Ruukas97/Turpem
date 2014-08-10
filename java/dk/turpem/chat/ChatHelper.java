@@ -2,16 +2,13 @@ package dk.turpem.chat;
 
 import java.util.List;
 
-import dk.turpem.util.GrammarHelper;
-import dk.turpem.util.MathHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.event.ClickEvent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
+import dk.turpem.util.GrammarHelper;
+import dk.turpem.util.MathHelper;
 
 public class ChatHelper {	
 	public static void sendChatFromText(EntityPlayer sender, String text){

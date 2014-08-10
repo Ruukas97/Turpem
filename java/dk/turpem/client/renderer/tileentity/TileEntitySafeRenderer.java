@@ -1,10 +1,6 @@
 package dk.turpem.client.renderer.tileentity;
 
-import java.util.Calendar;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
-import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -17,15 +13,11 @@ import org.lwjgl.opengl.GL12;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dk.turpem.Turpem;
-import dk.turpem.block.Safe;
-import dk.turpem.block.TurpemChest;
 import dk.turpem.client.model.ModelSafe;
 import dk.turpem.tileentity.TileEntitySafe;
-import dk.turpem.tileentity.TileEntityTurpemChest;
 
 @SideOnly(Side.CLIENT)
 public class TileEntitySafeRenderer extends TileEntitySpecialRenderer implements ISimpleBlockRenderingHandler

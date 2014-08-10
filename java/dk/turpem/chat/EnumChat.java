@@ -1,6 +1,5 @@
 package dk.turpem.chat;
 
-import scala.Char;
 import net.minecraft.util.EnumChatFormatting;
 import dk.turpem.util.GrammarHelper;
 

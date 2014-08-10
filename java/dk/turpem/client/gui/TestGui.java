@@ -1,19 +1,16 @@
 package dk.turpem.client.gui;
  
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
- 
-
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
  
 public class TestGui extends JPanel implements ActionListener {
     protected JButton b1, b2, b3;
