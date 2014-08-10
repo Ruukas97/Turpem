@@ -60,32 +60,27 @@ public class TileEntitySafeRenderer extends TileEntitySpecialRenderer implements
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
         short short1 = 0;
 
-        if (i == 2)
-        {
-            short1 = 180;
-        }
-
-        if (i == 3)
-        {
-            short1 = 0;
-        }
-
-        if (i == 4)
-        {
-            short1 = 90;
-        }
-
-        if (i == 5)
-        {
-            short1 = -90;
-        }
+        switch (i) {
+		case 2:
+			short1 = 180;
+			break;
+		case 3:
+			short1 = 0;
+			break;
+		case 4:
+			short1 = 90;
+			break;
+		case 5:
+			short1 = -90;
+			break;
+		}
 
         GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
         GL11.glTranslatef(-0.5F, -0.75F, -0.5F);
         float f1 = tileentity.prevDoorAngle + (tileentity.doorAngle - tileentity.prevDoorAngle) * p_147502_8_;
         f1 = 1.0F - f1;
         f1 = 1.0F - f1 * f1 * f1;
-        this.safeModel.safeDoor.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
+        this.safeModel.safeDoor.rotateAngleY = f1 * (float)Math.PI / 1.7F;
         this.safeModel.renderAll();
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
