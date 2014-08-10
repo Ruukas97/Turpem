@@ -20,9 +20,9 @@ public class TileEntitySafe extends TileEntity implements IInventory
 {
     private ItemStack[] safeContents = new ItemStack[9];
     /** The current angle of the lid (between 0 and 1) */
-    public float lidAngle;
+    public float doorAngle;
     /** The angle of the lid last tick */
-    public float prevLidAngle;
+    public float prevDoorAngle;
     /** The number of players currently using this safe */
     public int numPlayersUsing;
     /** Server sync counter (once per 20 ticks) */
@@ -240,31 +240,31 @@ public class TileEntitySafe extends TileEntity implements IInventory
             }
         }
 
-        this.prevLidAngle = this.lidAngle;
+        this.prevDoorAngle = this.doorAngle;
         f = 0.1F;
         double d2;
 
-        if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
+        if (this.numPlayersUsing == 0 && this.doorAngle > 0.0F || this.numPlayersUsing > 0 && this.doorAngle < 1.0F)
         {
-            float f1 = this.lidAngle;
+            float f1 = this.doorAngle;
 
             if (this.numPlayersUsing > 0)
             {
-                this.lidAngle += f;
+                this.doorAngle += f;
             }
             else
             {
-                this.lidAngle -= f;
+                this.doorAngle -= f;
             }
 
-            if (this.lidAngle > 1.0F)
+            if (this.doorAngle > 1.0F)
             {
-                this.lidAngle = 1.0F;
+                this.doorAngle = 1.0F;
             }
 
             float f2 = 0.5F;
 
-            if (this.lidAngle < f2 && f1 >= f2)
+            if (this.doorAngle < f2 && f1 >= f2)
             {
                 d2 = (double)this.xCoord + 0.5D;
                 double d0 = (double)this.zCoord + 0.5D;
@@ -272,9 +272,9 @@ public class TileEntitySafe extends TileEntity implements IInventory
                 this.worldObj.playSoundEffect(d2, (double)this.yCoord + 0.5D, d0, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
             }
 
-            if (this.lidAngle < 0.0F)
+            if (this.doorAngle < 0.0F)
             {
-                this.lidAngle = 0.0F;
+                this.doorAngle = 0.0F;
             }
         }
     }

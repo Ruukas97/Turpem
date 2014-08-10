@@ -70,7 +70,7 @@ public class RenderPlayerTurpem extends RenderPlayer {
 
 	@Override
 	protected boolean func_110813_b(EntityLivingBase entity) {
-		return Minecraft.isGuiEnabled() && entity != renderManager.livingPlayer && !entity.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) && entity.riddenByEntity == null;
+		return Minecraft.isGuiEnabled()/* && entity != renderManager.livingPlayer*/ && !entity.isInvisibleToPlayer(Minecraft.getMinecraft().thePlayer) && entity.riddenByEntity == null;
 	}
 
 	@Override
@@ -118,8 +118,10 @@ public class RenderPlayerTurpem extends RenderPlayer {
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			byte b0 = -1;
+
+			/*
 			Tessellator tessellator = Tessellator.instance;
-			byte b0 = 0;
 			if(label.equals("deadmau5")) {
 				b0 = -10;
 			}
@@ -131,7 +133,14 @@ public class RenderPlayerTurpem extends RenderPlayer {
 			tessellator.addVertex((double) (-j - 1), (double) (8 + b0), 0.0D);
 			tessellator.addVertex((double) (j + 1), (double) (8 + b0), 0.0D);
 			tessellator.addVertex((double) (j + 1), (double) (-1 + b0), 0.0D);
+			
+			tessellator.addVertex((double)(-j - 1), -1.0D, 0.0D);
+			tessellator.addVertex((double)(-j - 1), 8.0D, 0.0D);
+			tessellator.addVertex((double)(j + 1), 8.0D, 0.0D);
+			tessellator.addVertex((double)(j + 1), -1.0D, 0.0D);	
+			
 			tessellator.draw();
+			*/
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			fontRenderer.drawString(label, -fontRenderer.getStringWidth(label) / 2, b0, 553648127);
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -158,18 +167,18 @@ public class RenderPlayerTurpem extends RenderPlayer {
 		int glTextureID;
 		if(!player.getEntityData().hasKey("glTextureID")){
 			player.getEntityData().setInteger("glTexureID", GeneratePlayerSkin.generatePlayerSkin(player));		
-			System.out.println("Test");
+			//System.out.println("Test");
 		}
 		glTextureID = player.getEntityData().getInteger("glTextureID");
 			
-		System.out.println("1: " + glTextureID);
+		//System.out.println("1: " + glTextureID);
 		switch (glTextureID) {
 		case -1:
 			super.bindEntityTexture(player);
 			break;
 		default:
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, glTextureID);
-			System.out.println("2: " + glTextureID);
+			//System.out.println("2: " + glTextureID);
 			break;
 		}
 	}

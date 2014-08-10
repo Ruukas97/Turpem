@@ -31,7 +31,6 @@ public class RenderEvents {
 	private static final ResourceLocation silvercrown = new ResourceLocation("turpem:textures/titles/silvercrown.png");
 	private static final ResourceLocation donatorcrown = new ResourceLocation("turpem:textures/titles/donatorcrown.png");
 	
-	@SubscribeEvent
 	public void renderPlayerNameTag(RenderLivingEvent.Specials.Pre event){
 		EntityPlayer client = Minecraft.getMinecraft().thePlayer;
 		if(event.entity instanceof EntityPlayer) {
@@ -44,7 +43,7 @@ public class RenderEvents {
 	            	
 			if(MathHelper.calculateDistanceEntities3D(client, player) <= event.renderer.NAME_TAG_RANGE){
 				/**
-				 * Gets the username for rendering on the smaller nameplate
+				 * The username for rendering on the smaller nameplate
 				 */
 				String u = player.getCommandSenderName();
 				float f = 1F;

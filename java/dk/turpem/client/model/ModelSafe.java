@@ -8,22 +8,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelSafe extends ModelBase
 {
-    /** The chest lid in the chest's model. */
-    public ModelRenderer chestDoor = (new ModelRenderer(this, 42, 0)).setTextureSize(64, 32);
-    /** The model of the bottom of the chest. */
-    public ModelRenderer chestBelow;
+    /** The door in the safe's model. */
+    public ModelRenderer safeDoor = (new ModelRenderer(this, 42, 0)).setTextureSize(64, 32);
+    /** The model of the base of the chest. */
+    public ModelRenderer safeBase;
 
     public ModelSafe()
     {
-        this.chestDoor.addBox(0.0F, -4.0F, -1.0F, 8, 8, 1, 0.0F);
-        this.chestDoor.rotationPointX = 4.0F;
-        this.chestDoor.rotationPointY = 13.0F;
-        this.chestDoor.rotationPointZ = 1.0F;
-        this.chestBelow = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 32);
-        this.chestBelow.addBox(0.0F, 0.0F, 0.0F, 14, 14, 14, 0.0F);
-        this.chestBelow.rotationPointX = 1.0F;
-        this.chestBelow.rotationPointY = 6.0F;
-        this.chestBelow.rotationPointZ = 1.0F;
+        this.safeDoor.addBox(0.0F, -4.0F, -1.0F, 8, 8, 1, 0.0F);
+        this.safeDoor.rotationPointX = 4.0F;
+        this.safeDoor.rotationPointY = 13.0F;
+        this.safeDoor.rotationPointZ = 1.0F;
+        this.safeBase = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 32);
+        this.safeBase.addBox(0.0F, 0.0F, 0.0F, 14, 14, 14, 0.0F);
+        this.safeBase.rotationPointX = 1.0F;
+        this.safeBase.rotationPointY = 6.0F;
+        this.safeBase.rotationPointZ = 1.0F;
     }
 
     /**
@@ -31,7 +31,7 @@ public class ModelSafe extends ModelBase
      */
     public void renderAll()
     {
-        this.chestDoor.render(0.0625F);
-        this.chestBelow.render(0.0625F);
+        this.safeDoor.render(0.0625F);
+        this.safeBase.render(0.0625F);
     }
 }

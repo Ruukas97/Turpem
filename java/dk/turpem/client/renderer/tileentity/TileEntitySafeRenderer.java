@@ -3,6 +3,7 @@ package dk.turpem.client.renderer.tileentity;
 import java.util.Calendar;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
@@ -41,40 +42,54 @@ public class TileEntitySafeRenderer extends TileEntitySpecialRenderer implements
     {
     }
 
-    public void renderTileEntityAt(TileEntitySafe tileentity, double p_147502_2_, double p_147502_4_, double p_147502_6_, float p_147502_8_)
+    public void renderTileEntityAt(TileEntitySafe tileentity, double x, double y, double z, float p_147502_8_)
     {
-        int i;
+        int i = 0;
 
-        if (!tileentity.hasWorldObj())
+        if (tileentity.hasWorldObj())
         {
-            i = 0;
+            i = tileentity.getBlockMetadata();
         }
 
-            ModelSafe modelsafe;
-            modelsafe = this.safeModel;
+        this.bindTexture(this.ironSafe);
+        GL11.glPushMatrix();
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glTranslatef((float)x, (float)y + 1.0F, (float)z + 1.0F);
+        GL11.glScalef(1.0F, -1.0F, -1.0F);
+        GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+        short short1 = 0;
 
-            this.bindTexture(ironSafe);
+        if (i == 2)
+        {
+            short1 = 180;
+        }
 
-            GL11.glPushMatrix();
-            GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            GL11.glTranslatef((float)p_147502_2_, (float)p_147502_4_ + 1.0F, (float)p_147502_6_ + 1.0F);
-            GL11.glScalef(1.0F, -1.0F, -1.0F);
-            GL11.glTranslatef(0.5F, 0.25F, 0.5F);
-            short short1 = 0;
+        if (i == 3)
+        {
+            short1 = 0;
+        }
 
-            GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
-            GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-            float f1 = tileentity.prevLidAngle + (tileentity.lidAngle - tileentity.prevLidAngle) * p_147502_8_;
-            float f2;
+        if (i == 4)
+        {
+            short1 = 90;
+        }
 
-            f1 = 1.0F - f1;
-            f1 = 1.0F - f1 * f1 * f1;
-            modelsafe.chestDoor.rotateAngleY = (f1 * (float)Math.PI / 2.0F);
-            modelsafe.renderAll();
-            GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-            GL11.glPopMatrix();
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        if (i == 5)
+        {
+            short1 = -90;
+        }
+
+        GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
+        GL11.glTranslatef(-0.5F, -0.75F, -0.5F);
+        float f1 = tileentity.prevDoorAngle + (tileentity.doorAngle - tileentity.prevDoorAngle) * p_147502_8_;
+        f1 = 1.0F - f1;
+        f1 = 1.0F - f1 * f1 * f1;
+        this.safeModel.safeDoor.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
+        this.safeModel.renderAll();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        GL11.glPopMatrix();
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
 

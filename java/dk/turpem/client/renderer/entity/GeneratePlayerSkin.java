@@ -35,23 +35,9 @@ public class GeneratePlayerSkin {
 			TextureUtil.uploadTextureImageAllocate(TextureUtil.glGenTextures(), playerSkin, false, false);
 		}
 		catch (IOException e) {
-			System.out.println("Failed to generate skin.");
+			//System.out.println("Failed to generate skin.");
 			return -1; 
 		}
 		return TextureUtil.glGenTextures();
 	}
-	
-	/*public static void addPlayerClothing(EntityPlayer player) {
-		players.put(clothing.player, clothing);
-		try {
-			if(clothing.glTextureID == -1) {
-				clothing.glTextureID = TextureUtil.glGenTextures();
-			}
-			clothing.createClothingFile(clothingDir, clothingFileDir);
-			BufferedImage image = ImageIO.read(clothing.getClothingFile(clothingFileDir));
-			TextureUtil.uploadTextureImageAllocate(clothing.glTextureID, image, false, false);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}*/
 }
